@@ -71,11 +71,9 @@
               маштабирывания пройти 5 уровней <br />
               (игра для конкурса)
             </p>
-            <a
-              href=""
-              class="btnDownload btnDark"
-              >download</a
-            >
+            <button class="btnDownload btnDark" id="openModalBtn">
+              Download
+            </button>
           </div>
           <div class="storyGameLogo">
             <img
@@ -85,13 +83,54 @@
             />
           </div>
         </div>
-        
-        <div class="modal">
+
+        <div class="modal" id="myModel">
           <div class="modalBox">
+            <button id="closeMyModalBtn" class="btnDark closeBtn">
+              <img src="img/crest.png" alt="ops" />
+            </button>
             <h2>download scale</h2>
-            <a href="https://drive.google.com/uc?export=download&id=18HsoJP8V7fskA3ZOzQr3FUkZVWvjrXK8" class="btnDownload btnDark"></a>
+            <a
+              href="https://drive.google.com/uc?export=download&id=18HsoJP8V7fskA3ZOzQr3FUkZVWvjrXK8"
+              class="btnDownload btnDark"
+              >pc</a
+            >
+            <a
+              href="https://drive.google.com/uc?export=download&id=18HsoJP8V7fskA3ZOzQr3FUkZVWvjrXK8"
+              class="btnDownload btnDark"
+              >mobil</a
+            >
           </div>
         </div>
+      </main>
+    </div>
+
+    <script>
+      document
+        .getElementById("openModalBtn")
+        .addEventListener("click", function () {
+          document.getElementById("myModel").classList.add("open");
+        });
+
+      document
+        .getElementById("closeMyModalBtn")
+        .addEventListener("click", function () {
+          document.getElementById("myModel").classList.remove("open");
+        });
+
+      window.addEventListener("keydown", (e) => {
+        document.getElementById("myModel").classList.remove("open");
+      });
+
+      document.querySelector("#myModel .modalBox").addEventListener("click", (event) => {
+        event._isClikWithInModal = true;
+      });
+      document.getElementById("myModel").addEventListener('click', event => {
+        if (event._isClikWithInModal) return;
+        event.currentTarget.classList.remove('open')
+      })
+    </script>
+
         
       </main>
     </div>
